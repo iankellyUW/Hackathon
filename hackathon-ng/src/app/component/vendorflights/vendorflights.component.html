@@ -1,0 +1,43 @@
+<h2>Add Flight</h2>
+<span *ngIf="!(message == '')">{{message}}</span>
+<form (submit)="onFormSubmit()" [formGroup]="vendorForm">
+
+    <label>From / Source : </label>
+    <input type="text" name="source" formControlName="source">
+    <br /> <br />
+    <label>To / Destination : </label>
+    <input type="text" name="destination" formControlName="destination">
+    <br /> <br />
+    <br /> 
+    <label for="start">Departure Date: </label>
+    <input type="date" id="start" name="departureDate" value="2018-08-16" min="2018-08-16" max="2033-12-31" formControlName="departureDate">
+    <br /> <br />
+    <label>Departure Time: </label>
+    <input type="time" name="departureTime" value="12:30" formControlName="departureTime" />
+    <br /> <br />
+
+    <label for="finish">Arrival Date: </label>
+    <input type="date" id="finish" name="arrivalDate" value="2018-08-16" min="2018-08-16" max="2033-12-31" formControlName="arrivalDate">
+    <br /> <br />
+    <label>Arrival Time: </label>
+    <input type="time" name="arrivalTime" value="12:45" formControlName="arrivalTime" />
+    <br /> <br />
+    <br /> 
+
+    <label>Journey Duration: </label>
+    <input type="text" name="duration" formControlName="duration">
+    <br /> <br />
+    <label>Fare / Adult: </label>
+    <input type="text" name="fareAdult" formControlName="fareAdult">
+    <br /> <br />
+    <label>Fare / Child: </label>
+    <input type="text" name="fareChild" formControlName="fareChild">
+    <br />
+        (less than 12 months old)
+    <br /> <br />
+    <label>Total Seats: </label>
+    <input type="text" name="totalSeats" formControlName="totalSeats">
+
+    <br /> <br />
+    <input type="submit" value="Post Flight">
+</form>

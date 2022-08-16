@@ -1,0 +1,47 @@
+<span *ngIf="!(message == '')">{{message}}</span>
+<form (submit)="onFormSubmit()" [formGroup]="customerForm">
+
+    <label>From / Source : </label>
+    <input type="text" name="source" formControlName="source">
+    <br /> <br />
+    <label>To / Destination : </label>
+    <input type="text" name="destination" formControlName="destination">
+    <br /> <br />
+    <br />
+    <label for="start">Departure Date: </label>
+    <input type="date" id="start" name="departureDate" value="2018-08-16" min="2018-08-16" max="2033-12-31"
+        formControlName="departureDate">
+    <br /> <br />
+    <input type="submit" value="Search Flights">
+</form>
+<hr>
+<div *ngIf="showResults">
+<div *ngFor="let f of flightResults, let i = index">
+    <div>
+        Airlines: American Airlines&nbsp;&nbsp;
+        Departure: {{f.departureDate}} {{f.source}}&nbsp;&nbsp;
+        Duration: {{f.journeyDuration}}&nbsp;&nbsp;
+        Arrival: {{f.arrivalDate}} {{f.destination}}&nbsp;&nbsp;
+        Fare/Person: ${{f.adultFare}}&nbsp;&nbsp;
+        <button (click)="book(i)">Book</button>
+    </div>
+</div>
+</div>
+<hr>
+<div *ngIf="showConfirmation">
+    Booking Confirmation
+    <hr>
+    From:
+    {{bookingConfirmation.source}} {{bookingConfirmation.departureTime}}
+    <br />
+    To:
+    {{bookingConfirmation.destination}} {{bookingConfirmation.arrivalTime}}
+    <br />
+    Fare: $
+    {{bookingConfirmation.adultFare}}/Adult ${{bookingConfirmation.childFare}}/Child
+    <br />
+    No. of Adults: 1 &nbsp;&nbsp; No. of Children: 0
+    <br />
+    Total Fare: &nbsp;&nbsp;&nbsp;${{bookingConfirmation.adultFare}}
+
+</div>
